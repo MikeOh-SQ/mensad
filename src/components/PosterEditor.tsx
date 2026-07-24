@@ -108,6 +108,7 @@ export function PosterEditor() {
         imageUrl: input.backgroundImageUrl,
         imagePositionX: input.imagePositionX,
         imagePositionY: input.imagePositionY,
+        imageZoom: input.imageZoom,
         faces,
         selectedFaceIds,
         customBlurs,
@@ -136,6 +137,7 @@ export function PosterEditor() {
     input.backgroundImageUrl,
     input.imagePositionX,
     input.imagePositionY,
+    input.imageZoom,
     selectedFaceIds,
   ]);
 
@@ -295,6 +297,7 @@ export function PosterEditor() {
         <ImageUploader
           imagePositionX={input.imagePositionX}
           imagePositionY={input.imagePositionY}
+          imageZoom={input.imageZoom}
           showLogoControls={pageType === "title"}
           onImageChange={updateBackground}
           onLogoChange={updateLogo}
@@ -302,6 +305,7 @@ export function PosterEditor() {
           onPositionChange={(axis, value) =>
             updateInput(axis === "x" ? "imagePositionX" : "imagePositionY", value)
           }
+          onZoomChange={(value) => updateInput("imageZoom", value)}
         />
 
         <FaceBlurControls

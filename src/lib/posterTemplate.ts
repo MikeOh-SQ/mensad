@@ -11,6 +11,7 @@ export type PosterInput = {
   gradientOpacity: number;
   imagePositionX: number;
   imagePositionY: number;
+  imageZoom: number;
   topTextSize: number;
   topTextY: number;
   mainTitleSize: number;
@@ -53,6 +54,7 @@ export const DEFAULT_POSTER_INPUT: PosterInput = {
   gradientOpacity: 0.75,
   imagePositionX: 50,
   imagePositionY: 50,
+  imageZoom: 100,
   topTextSize: 41,
   topTextY: POSTER_TOKENS.topTextTop,
   mainTitleSize: 112,
