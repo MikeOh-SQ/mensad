@@ -3,6 +3,20 @@ import { POSTER_SIZE } from "./posterTemplate";
 
 export async function exportPoster(node: HTMLElement) {
   await document.fonts.ready;
+  const images = Array.from(node.querySelectorAll("img"));
+  await Promise.all(
+    images.map(async (image) => {
+      if (!image.complete) {
+        await new Promise<void>((resolve, reject) => {
+          image.addEventListener("load", () => resolve(), { once: true });
+          image.addEventListener("error", () => reject(new Error("Image loading failed.")), {
+            once: true,
+          });
+        });
+      }
+      await image.decode().catch(() => undefined);
+    }),
+  );
 
   const previousTransform = node.style.transform;
   const previousWidth = node.style.width;

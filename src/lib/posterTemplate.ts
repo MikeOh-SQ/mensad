@@ -17,7 +17,10 @@ export type PosterInput = {
   mainTitleY: number;
   subtitleSize: number;
   subtitleY: number;
+  subtitleAlignment: "left" | "center" | "right";
 };
+
+export type PageType = "title" | "sub";
 
 export const POSTER_SIZE = {
   width: 1080,
@@ -56,4 +59,5 @@ export const DEFAULT_POSTER_INPUT: PosterInput = {
   mainTitleY: POSTER_TOKENS.mainTitleTop,
   subtitleSize: 45,
   subtitleY: POSTER_TOKENS.subtitleTop,
+  subtitleAlignment: "left",
 };
