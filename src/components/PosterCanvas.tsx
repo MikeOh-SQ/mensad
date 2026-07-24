@@ -31,6 +31,7 @@ export function PosterCanvas({
           "--gradient-opacity": isTitlePage ? input.gradientOpacity : 0,
           "--image-position-x": `${input.imagePositionX}%`,
           "--image-position-y": `${input.imagePositionY}%`,
+          "--image-zoom": input.imageZoom / 100,
           transform: `scale(${scale})`,
         } as CSSProperties
       }

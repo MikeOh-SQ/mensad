@@ -1,21 +1,25 @@
 type ImageUploaderProps = {
   imagePositionX: number;
   imagePositionY: number;
+  imageZoom: number;
   showLogoControls: boolean;
   onImageChange: (url: string) => void;
   onLogoChange: (url: string) => void;
   onLogoClear: () => void;
   onPositionChange: (axis: "x" | "y", value: number) => void;
+  onZoomChange: (value: number) => void;
 };
 
 export function ImageUploader({
   imagePositionX,
   imagePositionY,
+  imageZoom,
   showLogoControls,
   onImageChange,
   onLogoChange,
   onLogoClear,
   onPositionChange,
+  onZoomChange,
 }: ImageUploaderProps) {
   return (
     <section className="controlGroup">
@@ -62,6 +66,18 @@ export function ImageUploader({
           Vertical crop <strong>{imagePositionY}</strong>
         </span>
         <input type="range" min="0" max="100" value={imagePositionY} onChange={(event) => onPositionChange("y", Number(event.target.value))} />
+      </label>
+      <label>
+        <span className="sliderLabel">
+          Image zoom <strong>{imageZoom}%</strong>
+        </span>
+        <input
+          type="range"
+          min="100"
+          max="300"
+          value={imageZoom}
+          onChange={(event) => onZoomChange(Number(event.target.value))}
+        />
       </label>
     </section>
   );

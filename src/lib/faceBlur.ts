@@ -21,6 +21,7 @@ type RenderBlurredBackgroundOptions = {
   imageUrl: string;
   imagePositionX: number;
   imagePositionY: number;
+  imageZoom: number;
   faces: DetectedFace[];
   selectedFaceIds: string[];
   customBlurs: CustomBlur[];
@@ -167,6 +168,7 @@ export async function renderBlurredBackground({
   imageUrl,
   imagePositionX,
   imagePositionY,
+  imageZoom,
   faces,
   selectedFaceIds,
   customBlurs,
@@ -182,10 +184,12 @@ export async function renderBlurredBackground({
     throw new Error("Canvas is not available.");
   }
 
-  const scale = Math.max(
-    POSTER_SIZE.width / image.naturalWidth,
-    POSTER_SIZE.height / image.naturalHeight,
-  );
+  const scale =
+    Math.max(
+      POSTER_SIZE.width / image.naturalWidth,
+      POSTER_SIZE.height / image.naturalHeight,
+    ) *
+    (imageZoom / 100);
   const drawWidth = image.naturalWidth * scale;
   const drawHeight = image.naturalHeight * scale;
   const drawX = (POSTER_SIZE.width - drawWidth) * (imagePositionX / 100);

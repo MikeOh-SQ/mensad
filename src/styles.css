@@ -433,11 +433,15 @@ details[open] > .collapsibleSummary::before {
 .background {
   object-fit: cover;
   object-position: var(--image-position-x) var(--image-position-y);
+  transform: scale(var(--image-zoom));
+  transform-origin: var(--image-position-x) var(--image-position-y);
 }
 
 .backgroundRendered {
   object-fit: fill;
   object-position: center;
+  transform: none;
+  transform-origin: center;
 }
 
 .backgroundPlaceholder {
